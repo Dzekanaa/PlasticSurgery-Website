@@ -113,6 +113,14 @@ class Action
             return $this->response;
         }
 
+        $filter_validate = apply_filters('mf_after_validation_check', ['is_valid' => $validate, 'form_data' => $form_data , 'file_data' => $file_data]);
+        
+        if (isset($filter_validate['is_valid']) && $filter_validate['is_valid'] == false) {
+            $this->response->status = 0;
+            $this->response->error =  [ $filter_validate['message'] ?? esc_html__('Form validation failed', 'metform') ];
+            return $this->response;
+        }
+
         // google recaptcha condition and action
         if ((isset($form_data['g-recaptcha-response']) || isset($form_data['g-recaptcha-response-v3'])) && (isset($this->fields['mf-recaptcha'])) && (isset($this->form_settings['mf_recaptcha_site_key'])) && $this->form_settings['mf_recaptcha_site_key'] != '') {
             if (isset($form_data['g-recaptcha-response']) && ($form_data['g-recaptcha-response'] == "")) {
@@ -583,8 +591,22 @@ class Action
         $field_count = 0;
         $errors = 0;
 
+        $hidden_fields = isset($form_data['hidden-fields']) ? json_decode($form_data['hidden-fields'], true) : [];
+
         foreach ($form_data as $key => $value) {
+
+            if (in_array($key, $hidden_fields)) {                
+                continue;
+            }
+            
             if (!is_array($value)) {
+
+                $is_required = isset($this->fields[$key]->mf_input_required) && $this->fields[$key]->mf_input_required == "yes";
+              
+                if(!$is_required && trim($value) == '') {
+                   continue;
+                }
+
                 $field_count++;
                 $min = ((isset($this->fields[$key]->mf_input_min_length) && $this->fields[$key]->mf_input_min_length != '') ? $this->fields[$key]->mf_input_min_length : '');
                 $max = ((isset($this->fields[$key]->mf_input_max_length) && $this->fields[$key]->mf_input_max_length != '') ? $this->fields[$key]->mf_input_max_length : '');
@@ -616,6 +638,21 @@ class Action
                     $errors++;
                     $this->response->status = 0;
                     $this->response->error[] = esc_html((($this->fields[$key]->mf_input_label != '') ? $this->fields[$key]->mf_input_label : $key) . " input criteria is not matched.");
+                }
+                if($validation_type == 'by_range'){
+
+                    $min = ((isset($this->fields[$key]->mf_input_min_value) && $this->fields[$key]->mf_input_min_value != '') ? $this->fields[$key]->mf_input_min_value : '');
+                    $max = ((isset($this->fields[$key]->mf_input_max_value) && $this->fields[$key]->mf_input_max_value != '') ? $this->fields[$key]->mf_input_max_value : '');
+                    if (($min != '') && ($min > intval(trim($value)))) {
+                        $errors++;
+                        $this->response->status = 0;
+                        $this->response->error[] = esc_html((($this->fields[$key]->mf_input_label != '') ? $this->fields[$key]->mf_input_label : $key) . " minimum input " . $min . " " . $type);
+                    }
+                    if (($max != '') && ($max < intval(trim($value)))) {
+                        $errors++;
+                        $this->response->status = 0;
+                        $this->response->error[] = esc_html((($this->fields[$key]->mf_input_label != '') ? $this->fields[$key]->mf_input_label : $key) . " maximum input " . $max . " " . $type);
+                    }
                 }
             }
         }

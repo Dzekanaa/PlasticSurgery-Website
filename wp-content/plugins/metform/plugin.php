@@ -19,11 +19,13 @@ final class Plugin {
         Autoloader::run();
 	   add_action( 'wp_head', array( $this, 'add_meta_for_search_excluded' ) );
        add_action( 'init', array ($this, 'metform_permalink_setup'));
+       add_action("metform/pro_awareness/before_grid_contents", ['\MetForm\Utils\Util', 'banner_consent']);
+       add_action( 'wp_ajax_metform_admin_action', ['\MetForm\Utils\Util', 'metform_admin_action'] );
     }
 
     public function version()
     {
-        return '3.6.0';
+        return '3.7.0';
     }
 
     public function package_type()
@@ -115,7 +117,18 @@ final class Plugin {
             Attr::instance();
 		}
 
-        \Wpmet\Libs\Rating::instance('metform')
+       
+
+
+        $filter_string = ''; // elementskit,metform-pro
+        $filter_string .= ((!in_array('elementskit/elementskit.php', apply_filters('active_plugins', get_option('active_plugins')))) ? '' : ',elementskit');
+        $filter_string .= (!class_exists('\MetForm\Plugin') ? '' : ',metform');
+        $filter_string .= (!class_exists('\MetForm_Pro\Plugin') ? '' : ',metform-pro');
+
+        if ( is_admin() && \MetForm\Utils\Util::get_settings( 'metform_user_consent_for_banner', 'yes' ) == 'yes' ) {
+      
+            //Rating notice
+            \Wpmet\Libs\Rating::instance('metform')
             ->set_plugin_logo('https://ps.w.org/metform/assets/icon-128x128.png')
             ->set_plugin('Metform', 'https://wpmet.com/wordpress.org/rating/metform')
             ->set_allowed_screens('edit-metform-entry')
@@ -125,12 +138,6 @@ final class Plugin {
             ->set_first_appear_day(7)
             ->set_condition(true)
             ->call();
-
-
-        $filter_string = ''; // elementskit,metform-pro
-        $filter_string .= ((!in_array('elementskit/elementskit.php', apply_filters('active_plugins', get_option('active_plugins')))) ? '' : ',elementskit');
-        $filter_string .= (!class_exists('\MetForm\Plugin') ? '' : ',metform');
-        $filter_string .= (!class_exists('\MetForm_Pro\Plugin') ? '' : ',metform-pro');
 
         // banner
         \Wpmet\Libs\Banner::instance('metform')
@@ -153,6 +160,7 @@ final class Plugin {
             ->set_api_url('https://api.wpmet.com/public/stories/')
             ->call();
 
+    }
         /**
          * Pro awareness feature;
          */
@@ -329,6 +337,11 @@ final class Plugin {
         wp_localize_script('metform-app', 'mf', [
             'postType' => get_post_type(),
             'restURI' => get_rest_url(null, 'metform/v1/forms/views/'),
+            'minMsg1' => __("Minimum length should be ","metform"),
+            'Msg2' => __(" character long.","metform"),
+            'maxMsg1' => __("Maximum length should be ","metform"),
+            'maxNum' => __("Maximum number should be ","metform"),
+            'minNum' => __("Minimum number should be ","metform"),
         ]);
 
         // Recaptcha Support Script.

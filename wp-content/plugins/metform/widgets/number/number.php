@@ -54,7 +54,7 @@ Class MetForm_Input_Number extends Widget_Base{
 			]
 		);
 
-		$this->input_setting_controls(['VALIDATION']);
+		$this->input_setting_controls(['NUM_VALIDATION']);
 
 		$this->input_get_params_controls();
 		
@@ -144,8 +144,8 @@ Class MetForm_Input_Number extends Widget_Base{
 
 		$configData = [
 			'message' 		=> $errorMessage 	= isset($mf_input_validation_warning_message) ? !empty($mf_input_validation_warning_message) ? $mf_input_validation_warning_message : esc_html__('This field is required.', 'metform') : esc_html__('This field is required.', 'metform'),
-			'minLength'		=> isset($mf_input_min_length) ? $mf_input_min_length : 1,
-			'maxLength'		=> isset($mf_input_max_length) ? $mf_input_max_length : '',
+			'minLength'		=> isset($mf_input_min_value) ? $mf_input_min_value : 1,
+			'maxLength'		=> isset($mf_input_max_value) ? $mf_input_max_value : '',
 			'type'			=> isset($mf_input_validation_type) ? $mf_input_validation_type : '',
 			'required'		=> isset($mf_input_required) && $mf_input_required == 'yes' ? true : false,
 			'expression'	=> isset($mf_input_validation_expression) && !empty(trim($mf_input_validation_expression)) ? trim($mf_input_validation_expression) : 'null'

@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 3.6.0\n"
+"Project-Id-Version: MetForm 3.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2023-10-02 11:35:51+00:00\n"
+"POT-Creation-Date: 2023-10-23 06:12:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -807,95 +807,95 @@ msgstr ""
 msgid "You are trying to upload wrong file!"
 msgstr ""
 
-#: core/entries/action.php:112
+#: core/entries/action.php:112 core/entries/action.php:120
 msgid "Form validation failed"
 msgstr ""
 
-#: core/entries/action.php:120 core/entries/action.php:150
+#: core/entries/action.php:128 core/entries/action.php:158
 msgid "Please solve the recaptcha."
 msgstr ""
 
-#: core/entries/action.php:126
+#: core/entries/action.php:134
 msgid "Google captcha token not found."
 msgstr ""
 
-#: core/entries/action.php:174
+#: core/entries/action.php:182
 msgid "Time out of this captcha. Please reload or choose another one."
 msgstr ""
 
-#: core/entries/action.php:183
+#: core/entries/action.php:191
 msgid "Enter correct captcha."
 msgstr ""
 
-#: core/entries/action.php:193
+#: core/entries/action.php:201
 msgid "You must be logged in to submit form."
 msgstr ""
 
-#: core/entries/action.php:203
+#: core/entries/action.php:211
 msgid "Form submission limit exceeded."
 msgstr ""
 
-#: core/entries/action.php:261
+#: core/entries/action.php:269
 msgid "Problem with your mailchimp integration."
 msgstr ""
 
-#: core/entries/action.php:277
+#: core/entries/action.php:285
 msgid "Problem with your activeCampaign integration."
 msgstr ""
 
-#: core/entries/action.php:292
+#: core/entries/action.php:300
 msgid "Problem with your GetResponse integration."
 msgstr ""
 
-#: core/entries/action.php:313
+#: core/entries/action.php:321
 msgid "Problem with your zapier integration."
 msgstr ""
 
-#: core/entries/action.php:336
+#: core/entries/action.php:344
 msgid "Problem with your slack integration."
 msgstr ""
 
-#: core/entries/action.php:352
+#: core/entries/action.php:360
 msgid "Problem with convertKit."
 msgstr ""
 
-#: core/entries/action.php:368
+#: core/entries/action.php:376
 msgid "Problem with your Aweber integration."
 msgstr ""
 
-#: core/entries/action.php:382
+#: core/entries/action.php:390
 msgid "Problem with your Mail Poet integration."
 msgstr ""
 
-#: core/entries/action.php:471
+#: core/entries/action.php:479
 msgid "Problem with your RestApi integration."
 msgstr ""
 
-#: core/entries/action.php:495
+#: core/entries/action.php:503
 msgid " Please wait... Redirecting to paypal."
 msgstr ""
 
-#: core/entries/action.php:538
+#: core/entries/action.php:546
 msgid " Please wait... Open a Stripe Popup Box."
 msgstr ""
 
-#: core/entries/action.php:651
+#: core/entries/action.php:688
 msgid "ssl certificate or google oauth credentials problem"
 msgstr ""
 
-#: core/entries/action.php:769
+#: core/entries/action.php:806
 msgid "Mail not found."
 msgstr ""
 
-#: core/entries/action.php:775 core/entries/action.php:828
+#: core/entries/action.php:812 core/entries/action.php:865
 msgid "Please setup your SMTP mail server."
 msgstr ""
 
-#: core/entries/action.php:818
+#: core/entries/action.php:855
 msgid "Admin mail not found to send email."
 msgstr ""
 
-#: core/entries/action.php:967
+#: core/entries/action.php:1004
 msgid "There was an error uploading your file."
 msgstr ""
 
@@ -1049,7 +1049,7 @@ msgid "Export Actions"
 msgstr ""
 
 #: core/entries/hooks.php:77 traits/common-controls.php:136
-#: traits/common-controls.php:941 traits/quiz-control.php:303
+#: traits/common-controls.php:977 traits/quiz-control.php:303
 #: traits/quiz-control.php:393 traits/quiz-control.php:476
 #: traits/quiz-control.php:619 widgets/checkbox/checkbox.php:141
 #: widgets/date/date.php:145 widgets/date/date.php:207
@@ -1063,7 +1063,7 @@ msgid "Yes"
 msgstr ""
 
 #: core/entries/hooks.php:79 traits/common-controls.php:137
-#: traits/common-controls.php:942 traits/quiz-control.php:304
+#: traits/common-controls.php:978 traits/quiz-control.php:304
 #: traits/quiz-control.php:394 traits/quiz-control.php:477
 #: traits/quiz-control.php:620 widgets/checkbox/checkbox.php:142
 #: widgets/date/date.php:146 widgets/date/date.php:208
@@ -2369,8 +2369,8 @@ msgid "Facebook Messenger"
 msgstr ""
 
 #: core/integrations/onboard/views/settings-sections/usersettings.php:304
-#: traits/common-controls.php:319 traits/common-controls.php:511
-#: traits/common-controls.php:867 traits/common-controls.php:908
+#: traits/common-controls.php:355 traits/common-controls.php:547
+#: traits/common-controls.php:903 traits/common-controls.php:944
 #: widgets/email/email.php:154 widgets/file-upload/file-upload.php:317
 #: widgets/file-upload/file-upload.php:348
 #: widgets/gdpr-consent/gdpr-consent.php:181 widgets/select/select.php:414
@@ -2473,29 +2473,49 @@ msgstr ""
 msgid "Your data inserted on slack."
 msgstr ""
 
-#: plugin.php:506
+#: plugin.php:340
+msgid "Minimum length should be "
+msgstr ""
+
+#: plugin.php:341
+msgid " character long."
+msgstr ""
+
+#: plugin.php:342
+msgid "Maximum length should be "
+msgstr ""
+
+#: plugin.php:343
+msgid "Maximum number should be "
+msgstr ""
+
+#: plugin.php:344
+msgid "Minimum number should be "
+msgstr ""
+
+#: plugin.php:519
 msgid "Activate Elementor"
 msgstr ""
 
-#: plugin.php:513
+#: plugin.php:526
 msgid "Install Elementor"
 msgstr ""
 
-#: plugin.php:517 plugin.php:551
+#: plugin.php:530 plugin.php:564
 #. translators: MetForm plugin version requirement. %s is the required
 #. Elementor version.
 msgid "MetForm requires Elementor version %1$s+, which is currently NOT RUNNING."
 msgstr ""
 
-#: plugin.php:533
+#: plugin.php:546
 msgid "MetForm Pro"
 msgstr ""
 
-#: plugin.php:537 plugin.php:554
+#: plugin.php:550 plugin.php:567
 msgid "We have MetForm Pro version. Check out our pro feature."
 msgstr ""
 
-#: plugin.php:549
+#: plugin.php:562
 msgid "Update Elementor"
 msgstr ""
 
@@ -2593,8 +2613,8 @@ msgid "Input List"
 msgstr ""
 
 #: traits/button-controls.php:157 traits/button-controls.php:450
-#: traits/common-controls.php:350 traits/common-controls.php:542
-#: traits/common-controls.php:573 traits/common-controls.php:923
+#: traits/common-controls.php:386 traits/common-controls.php:578
+#: traits/common-controls.php:609 traits/common-controls.php:959
 #: widgets/checkbox/checkbox.php:259 widgets/email/email.php:179
 #: widgets/file-upload/file-upload.php:384
 #: widgets/gdpr-consent/gdpr-consent.php:212
@@ -2608,9 +2628,9 @@ msgstr ""
 msgid "Padding"
 msgstr ""
 
-#: traits/button-controls.php:177 traits/common-controls.php:337
-#: traits/common-controls.php:529 traits/common-controls.php:798
-#: traits/common-controls.php:854 traits/common-controls.php:897
+#: traits/button-controls.php:177 traits/common-controls.php:373
+#: traits/common-controls.php:565 traits/common-controls.php:834
+#: traits/common-controls.php:890 traits/common-controls.php:933
 #: widgets/email/email.php:169 widgets/gdpr-consent/gdpr-consent.php:199
 #: widgets/range/range.php:323 widgets/rating/rating.php:267
 #: widgets/simple-captcha/simple-captcha.php:181 widgets/switch/switch.php:197
@@ -2619,7 +2639,7 @@ msgid "Typography"
 msgstr ""
 
 #: traits/button-controls.php:195 traits/button-controls.php:293
-#: traits/button-controls.php:374 traits/common-controls.php:607
+#: traits/button-controls.php:374 traits/common-controls.php:643
 #: widgets/checkbox/checkbox.php:300 widgets/file-upload/file-upload.php:310
 #: widgets/gdpr-consent/gdpr-consent.php:345
 #: widgets/listing-optin/listing-optin.php:185 widgets/radio/radio.php:320
@@ -2635,19 +2655,20 @@ msgid "Text Color"
 msgstr ""
 
 #: traits/button-controls.php:224 traits/button-controls.php:317
-#: traits/button-controls.php:399 traits/common-controls.php:670
+#: traits/button-controls.php:399 traits/common-controls.php:706
 #: widgets/file-upload/file-upload.php:341 widgets/select/select.php:441
 msgid "Hover"
 msgstr ""
 
 #: traits/button-controls.php:260 traits/common-controls.php:146
-#: widgets/switch/switch.php:236 widgets/switch/switch.php:320
-#: widgets/switch/switch.php:417 widgets/switch/switch.php:501
+#: traits/common-controls.php:177 widgets/switch/switch.php:236
+#: widgets/switch/switch.php:320 widgets/switch/switch.php:417
+#: widgets/switch/switch.php:501
 msgid "None"
 msgstr ""
 
-#: traits/button-controls.php:342 traits/common-controls.php:255
-#: traits/common-controls.php:811 widgets/file-upload/file-upload.php:417
+#: traits/button-controls.php:342 traits/common-controls.php:291
+#: traits/common-controls.php:847 widgets/file-upload/file-upload.php:417
 #: widgets/range/range.php:300 widgets/range/range.php:379
 #: widgets/rating/rating.php:229 widgets/select/select.php:290
 #: widgets/select/select.php:369
@@ -2762,35 +2783,47 @@ msgstr ""
 msgid "By Word length"
 msgstr ""
 
-#: traits/common-controls.php:155
+#: traits/common-controls.php:155 traits/common-controls.php:177
 msgid "By expression based"
 msgstr ""
 
-#: traits/common-controls.php:162
+#: traits/common-controls.php:162 traits/common-controls.php:174
 msgid "Validation type"
 msgstr ""
 
-#: traits/common-controls.php:173 widgets/range/range.php:71
+#: traits/common-controls.php:177
+msgid "By range"
+msgstr ""
+
+#: traits/common-controls.php:184
+msgid "Min Value"
+msgstr ""
+
+#: traits/common-controls.php:196
+msgid "Max Value"
+msgstr ""
+
+#: traits/common-controls.php:209 widgets/range/range.php:71
 msgid "Min Length"
 msgstr ""
 
-#: traits/common-controls.php:184 widgets/range/range.php:81
+#: traits/common-controls.php:220 widgets/range/range.php:81
 msgid "Max Length"
 msgstr ""
 
-#: traits/common-controls.php:197
+#: traits/common-controls.php:233
 msgid "Expression for validate "
 msgstr ""
 
-#: traits/common-controls.php:200
+#: traits/common-controls.php:236
 msgid "Ex: [a-zA-Z]+ "
 msgstr ""
 
-#: traits/common-controls.php:211 traits/common-controls.php:213
+#: traits/common-controls.php:247 traits/common-controls.php:249
 msgid "Warning message"
 msgstr ""
 
-#: traits/common-controls.php:214 widgets/checkbox/checkbox.php:441
+#: traits/common-controls.php:250 widgets/checkbox/checkbox.php:441
 #: widgets/date/date.php:561 widgets/email/email.php:231
 #: widgets/file-upload/file-upload.php:468
 #: widgets/gdpr-consent/gdpr-consent.php:485
@@ -2807,29 +2840,29 @@ msgstr ""
 msgid "This field is required."
 msgstr ""
 
-#: traits/common-controls.php:240 traits/common-controls.php:842
+#: traits/common-controls.php:276 traits/common-controls.php:878
 #: widgets/range/range.php:392 widgets/rating/rating.php:280
 #: widgets/select/select.php:327 widgets/switch/switch.php:170
 msgid "Box Shadow"
 msgstr ""
 
-#: traits/common-controls.php:248 traits/common-controls.php:658
-#: traits/common-controls.php:716 traits/common-controls.php:776
+#: traits/common-controls.php:284 traits/common-controls.php:694
+#: traits/common-controls.php:752 traits/common-controls.php:812
 #: widgets/button/button.php:84 widgets/file-upload/file-upload.php:409
 #: widgets/rating/rating.php:183 widgets/rating/rating.php:216
 #: widgets/select/select.php:318 widgets/select/select.php:397
 msgid "Border"
 msgstr ""
 
-#: traits/common-controls.php:287 traits/common-controls.php:479
+#: traits/common-controls.php:323 traits/common-controls.php:515
 #: widgets/gdpr-consent/gdpr-consent.php:149 widgets/range/range.php:177
 #: widgets/range/range.php:232 widgets/range/range.php:331
 #: widgets/simple-captcha/simple-captcha.php:135 widgets/switch/switch.php:136
 msgid "Width"
 msgstr ""
 
-#: traits/common-controls.php:364 traits/common-controls.php:556
-#: traits/common-controls.php:589 widgets/checkbox/checkbox.php:270
+#: traits/common-controls.php:400 traits/common-controls.php:592
+#: traits/common-controls.php:625 widgets/checkbox/checkbox.php:270
 #: widgets/email/email.php:190 widgets/file-upload/file-upload.php:396
 #: widgets/gdpr-consent/gdpr-consent.php:226
 #: widgets/gdpr-consent/gdpr-consent.php:315
@@ -2841,41 +2874,41 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: traits/common-controls.php:379 widgets/gdpr-consent/gdpr-consent.php:243
+#: traits/common-controls.php:415 widgets/gdpr-consent/gdpr-consent.php:243
 #: widgets/simple-captcha/simple-captcha.php:223
 msgid "Required Indicator Color:"
 msgstr ""
 
-#: traits/common-controls.php:431 widgets/gdpr-consent/gdpr-consent.php:261
+#: traits/common-controls.php:467 widgets/gdpr-consent/gdpr-consent.php:261
 #: widgets/recaptcha/recaptcha.php:75
 #: widgets/simple-captcha/simple-captcha.php:239
 msgid "Warning Text Color:"
 msgstr ""
 
-#: traits/common-controls.php:451 widgets/gdpr-consent/gdpr-consent.php:280
+#: traits/common-controls.php:487 widgets/gdpr-consent/gdpr-consent.php:280
 #: widgets/recaptcha/recaptcha.php:91
 #: widgets/simple-captcha/simple-captcha.php:255
 msgid "Warning Text Typography"
 msgstr ""
 
-#: traits/common-controls.php:614 traits/common-controls.php:677
-#: traits/common-controls.php:736 widgets/rating/rating.php:167
+#: traits/common-controls.php:650 traits/common-controls.php:713
+#: traits/common-controls.php:772 widgets/rating/rating.php:167
 #: widgets/rating/rating.php:200
 msgid "Input Color"
 msgstr ""
 
-#: traits/common-controls.php:645 traits/common-controls.php:704
-#: traits/common-controls.php:762 widgets/file-upload/file-upload.php:330
+#: traits/common-controls.php:681 traits/common-controls.php:740
+#: traits/common-controls.php:798 widgets/file-upload/file-upload.php:330
 #: widgets/file-upload/file-upload.php:361 widgets/select/select.php:430
 #: widgets/select/select.php:464 widgets/select/select.php:498
 msgid "Background"
 msgstr ""
 
-#: traits/common-controls.php:729
+#: traits/common-controls.php:765
 msgid "Focus"
 msgstr ""
 
-#: traits/common-controls.php:939
+#: traits/common-controls.php:975
 msgid "Get Value From URL?"
 msgstr ""
 
@@ -3210,17 +3243,23 @@ msgstr ""
 msgid "Facebook Community"
 msgstr ""
 
-#: utils/util.php:554
+#: utils/user-consent-banner/consent-check-view.php:44
+msgid ""
+"Show update & fix related important messages, essential tutorials and "
+"promotional images on WP Dashboard"
+msgstr ""
+
+#: utils/util.php:616
 msgid ""
 "Plain permalink is not supported with MetForm. We recommend to use post "
 "name as your permalink settings."
 msgstr ""
 
-#: utils/util.php:560
+#: utils/util.php:622
 msgid "Change Permalink"
 msgstr ""
 
-#: utils/util.php:586
+#: utils/util.php:648
 msgid "Permalink Structure Updated!"
 msgstr ""
 

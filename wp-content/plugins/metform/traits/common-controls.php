@@ -167,6 +167,42 @@ trait Common_Controls{
 			);	
 		}
 
+		if( in_array('NUM_VALIDATION', $param ) ){
+			$this->add_control(
+				'mf_input_validation_type',
+				[
+					'label' => esc_html__( 'Validation type', 'metform' ),
+					'type' => Controls_Manager::SELECT,
+					'default' => 'none',
+					'options' => ['none' => esc_html__( 'None', 'metform' ), 'by_range' => esc_html__( 'By range', 'metform' ), 'by_expresssion_based' => esc_html__( 'By expression based', 'metform' )],
+				]
+			);
+
+			$this->add_control(
+				'mf_input_min_value',
+				[
+					'label' => esc_html__( 'Min Value', 'metform' ),
+					'type' => Controls_Manager::NUMBER,
+					'step' => 1,
+					'condition' => [
+						'mf_input_validation_type' => ['by_range']
+					],
+				]
+			);
+	
+			$this->add_control(
+				'mf_input_max_value',
+				[
+					'label' => esc_html__( 'Max Value', 'metform' ),
+					'type' => Controls_Manager::NUMBER,
+					'step' => 1,
+					'condition' => [
+						'mf_input_validation_type' => ['by_range']
+					],
+				]
+			);
+		}
+
 		$this->add_control(
 			'mf_input_min_length',
 			[
