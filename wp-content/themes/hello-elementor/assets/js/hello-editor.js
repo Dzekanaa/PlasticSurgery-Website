@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -16,18 +8,30 @@
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports[\"default\"] = void 0;\nvar _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ \"./node_modules/@babel/runtime/helpers/defineProperty.js\"));\nvar _controlsHook = _interopRequireDefault(__webpack_require__(/*! ./hooks/ui/controls-hook */ \"./assets/dev/js/editor/hooks/ui/controls-hook.js\"));\nclass _default extends $e.modules.ComponentBase {\n  constructor() {\n    super(...arguments);\n    (0, _defineProperty2.default)(this, \"pages\", {});\n  }\n  getNamespace() {\n    return 'hello-elementor';\n  }\n  defaultHooks() {\n    return this.importHooks({\n      ControlsHook: _controlsHook.default\n    });\n  }\n}\nexports[\"default\"] = _default;\n\n//# sourceURL=././assets/dev/js/editor/component.js");
 
-/***/ }),
 
-/***/ "./assets/dev/js/editor/hello-editor.js":
-/*!**********************************************!*\
-  !*** ./assets/dev/js/editor/hello-editor.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\nvar _component = _interopRequireDefault(__webpack_require__(/*! ./component */ \"./assets/dev/js/editor/component.js\"));\n$e.components.register(new _component.default());\n\n//# sourceURL=././assets/dev/js/editor/hello-editor.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+var _controlsHook = _interopRequireDefault(__webpack_require__(/*! ./hooks/ui/controls-hook */ "./assets/dev/js/editor/hooks/ui/controls-hook.js"));
+class _default extends $e.modules.ComponentBase {
+  constructor(...args) {
+    super(...args);
+    (0, _defineProperty2.default)(this, "pages", {});
+  }
+  getNamespace() {
+    return 'hello-elementor';
+  }
+  defaultHooks() {
+    return this.importHooks({
+      ControlsHook: _controlsHook.default
+    });
+  }
+}
+exports["default"] = _default;
 
 /***/ }),
 
@@ -38,7 +42,239 @@ eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/he
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports[\"default\"] = void 0;\nclass ControlsHook extends $e.modules.hookUI.After {\n  getCommand() {\n    // Command to listen.\n    return 'document/elements/settings';\n  }\n  getId() {\n    // Unique id for the hook.\n    return 'hello-elementor-editor-controls-handler';\n  }\n\n  /**\n   * Get Hello Theme Controls\n   *\n   * Returns an object in which the keys are control IDs, and the values are the selectors of the elements that need\n   * to be targeted in the apply() method.\n   *\n   * Example return value:\n   *   {\n   *      hello_elementor_show_logo: '.site-header .site-header-logo',\n   *      hello_elementor_show_menu: '.site-header .site-header-menu',\n   *   }\n   */\n  getHelloThemeControls() {\n    return {\n      hello_header_logo_display: {\n        selector: '.site-header .site-logo, .site-header .site-title',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_header_logo_display);\n        }\n      },\n      hello_header_menu_display: {\n        selector: '.site-header .site-navigation, .site-header .site-navigation-toggle-holder',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_header_menu_display);\n        }\n      },\n      hello_header_tagline_display: {\n        selector: '.site-header .site-description',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_header_tagline_display);\n        }\n      },\n      hello_header_logo_type: {\n        selector: '.site-header .site-branding',\n        callback: ($element, args) => {\n          const classPrefix = 'show-',\n            inputOptions = args.container.controls.hello_header_logo_type.options,\n            inputValue = args.settings.hello_header_logo_type;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_header_layout: {\n        selector: '.site-header',\n        callback: ($element, args) => {\n          const classPrefix = 'header-',\n            inputOptions = args.container.controls.hello_header_layout.options,\n            inputValue = args.settings.hello_header_layout;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_header_width: {\n        selector: '.site-header',\n        callback: ($element, args) => {\n          const classPrefix = 'header-',\n            inputOptions = args.container.controls.hello_header_width.options,\n            inputValue = args.settings.hello_header_width;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_header_menu_layout: {\n        selector: '.site-header',\n        callback: ($element, args) => {\n          const classPrefix = 'menu-layout-',\n            inputOptions = args.container.controls.hello_header_menu_layout.options,\n            inputValue = args.settings.hello_header_menu_layout;\n\n          // No matter what, close the mobile menu\n          $element.find('.site-navigation-toggle-holder').removeClass('elementor-active');\n          $element.find('.site-navigation-dropdown').removeClass('show');\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_header_menu_dropdown: {\n        selector: '.site-header',\n        callback: ($element, args) => {\n          const classPrefix = 'menu-dropdown-',\n            inputOptions = args.container.controls.hello_header_menu_dropdown.options,\n            inputValue = args.settings.hello_header_menu_dropdown;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_footer_logo_display: {\n        selector: '.site-footer .site-logo, .site-footer .site-title',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_footer_logo_display);\n        }\n      },\n      hello_footer_tagline_display: {\n        selector: '.site-footer .site-description',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_footer_tagline_display);\n        }\n      },\n      hello_footer_menu_display: {\n        selector: '.site-footer .site-navigation',\n        callback: ($element, args) => {\n          this.toggleShowHideClass($element, args.settings.hello_footer_menu_display);\n        }\n      },\n      hello_footer_copyright_display: {\n        selector: '.site-footer .copyright',\n        callback: ($element, args) => {\n          const $footerContainer = $element.closest('#site-footer'),\n            inputValue = args.settings.hello_footer_copyright_display;\n          this.toggleShowHideClass($element, inputValue);\n          $footerContainer.toggleClass('footer-has-copyright', 'yes' === inputValue);\n        }\n      },\n      hello_footer_logo_type: {\n        selector: '.site-footer .site-branding',\n        callback: ($element, args) => {\n          const classPrefix = 'show-',\n            inputOptions = args.container.controls.hello_footer_logo_type.options,\n            inputValue = args.settings.hello_footer_logo_type;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_footer_layout: {\n        selector: '.site-footer',\n        callback: ($element, args) => {\n          const classPrefix = 'footer-',\n            inputOptions = args.container.controls.hello_footer_layout.options,\n            inputValue = args.settings.hello_footer_layout;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_footer_width: {\n        selector: '.site-footer',\n        callback: ($element, args) => {\n          const classPrefix = 'footer-',\n            inputOptions = args.container.controls.hello_footer_width.options,\n            inputValue = args.settings.hello_footer_width;\n          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);\n        }\n      },\n      hello_footer_copyright_text: {\n        selector: '.site-footer .copyright',\n        callback: ($element, args) => {\n          const inputValue = args.settings.hello_footer_copyright_text;\n          $element.find('p').text(inputValue);\n        }\n      }\n    };\n  }\n\n  /**\n   * Toggle show and hide classes on containers\n   *\n   * This will remove the .show and .hide clases from the element, then apply the new class\n   *\n   * @param {jQuery} element\n   * @param {string} inputValue\n   */\n  toggleShowHideClass(element, inputValue) {\n    element.removeClass('hide').removeClass('show').addClass(inputValue ? 'show' : 'hide');\n  }\n\n  /**\n   * Toggle layout classes on containers\n   *\n   * This will cleanly set classes onto which ever container we want to target, removing the old classes and adding the new one\n   *\n   * @param {jQuery} element\n   * @param {string} classPrefix\n   * @param {Object} inputOptions\n   * @param {string} inputValue\n   *\n   */\n  toggleLayoutClass(element, classPrefix, inputOptions, inputValue) {\n    // Loop through the possible classes and remove the one that's not in use\n    Object.entries(inputOptions).forEach(_ref => {\n      let [key] = _ref;\n      element.removeClass(classPrefix + key);\n    });\n\n    // Append the class which we want to use onto the element\n    if ('' !== inputValue) {\n      element.addClass(classPrefix + inputValue);\n    }\n  }\n\n  /**\n   * Set the conditions under which the hook will run.\n   *\n   * @param {Object} args\n   */\n  getConditions(args) {\n    const isKit = 'kit' === elementor.documents.getCurrent().config.type,\n      changedControls = Object.keys(args.settings),\n      isSingleSetting = 1 === changedControls.length;\n\n    // If the document is not a kit, or there are no changed settings, or there is more than one single changed\n    // setting, don't run the hook.\n    if (!isKit || !args.settings || !isSingleSetting) {\n      return false;\n    }\n\n    // If the changed control is in the list of theme controls, return true to run the hook.\n    // Otherwise, return false so the hook doesn't run.\n    return !!Object.keys(this.getHelloThemeControls()).includes(changedControls[0]);\n  }\n\n  /**\n   * The hook logic.\n   *\n   * @param {Object} args\n   */\n  apply(args) {\n    const allThemeControls = this.getHelloThemeControls(),\n      // Extract the control ID from the passed args\n      controlId = Object.keys(args.settings)[0],\n      controlConfig = allThemeControls[controlId],\n      // Find the element that needs to be targeted by the control.\n      $element = elementor.$previewContents.find(controlConfig.selector);\n    controlConfig.callback($element, args);\n  }\n}\nexports[\"default\"] = ControlsHook;\n\n//# sourceURL=././assets/dev/js/editor/hooks/ui/controls-hook.js");
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+class ControlsHook extends $e.modules.hookUI.After {
+  getCommand() {
+    // Command to listen.
+    return 'document/elements/settings';
+  }
+  getId() {
+    // Unique id for the hook.
+    return 'hello-elementor-editor-controls-handler';
+  }
+
+  /**
+   * Get Hello Elementor Theme Controls
+   *
+   * Returns an object in which the keys are control IDs, and the values are the selectors of the elements that need
+   * to be targeted in the apply() method.
+   *
+   * Example return value:
+   *   {
+   *      hello_elementor_show_logo: '.site-header .site-header-logo',
+   *      hello_elementor_show_menu: '.site-header .site-header-menu',
+   *   }
+   */
+  getHelloThemeControls() {
+    return {
+      hello_header_logo_display: {
+        selector: '.site-header .site-logo, .site-header .site-title',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_header_logo_display);
+        }
+      },
+      hello_header_menu_display: {
+        selector: '.site-header .site-navigation, .site-header .site-navigation-toggle-holder',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_header_menu_display);
+        }
+      },
+      hello_header_tagline_display: {
+        selector: '.site-header .site-description',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_header_tagline_display);
+        }
+      },
+      hello_header_logo_type: {
+        selector: '.site-header .site-branding',
+        callback: ($element, args) => {
+          const classPrefix = 'show-',
+            inputOptions = args.container.controls.hello_header_logo_type.options,
+            inputValue = args.settings.hello_header_logo_type;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_header_layout: {
+        selector: '.site-header',
+        callback: ($element, args) => {
+          const classPrefix = 'header-',
+            inputOptions = args.container.controls.hello_header_layout.options,
+            inputValue = args.settings.hello_header_layout;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_header_width: {
+        selector: '.site-header',
+        callback: ($element, args) => {
+          const classPrefix = 'header-',
+            inputOptions = args.container.controls.hello_header_width.options,
+            inputValue = args.settings.hello_header_width;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_header_menu_layout: {
+        selector: '.site-header',
+        callback: ($element, args) => {
+          const classPrefix = 'menu-layout-',
+            inputOptions = args.container.controls.hello_header_menu_layout.options,
+            inputValue = args.settings.hello_header_menu_layout;
+
+          // No matter what, close the mobile menu
+          $element.find('.site-navigation-toggle-holder').removeClass('elementor-active');
+          $element.find('.site-navigation-dropdown').removeClass('show');
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_header_menu_dropdown: {
+        selector: '.site-header',
+        callback: ($element, args) => {
+          const classPrefix = 'menu-dropdown-',
+            inputOptions = args.container.controls.hello_header_menu_dropdown.options,
+            inputValue = args.settings.hello_header_menu_dropdown;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_footer_logo_display: {
+        selector: '.site-footer .site-logo, .site-footer .site-title',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_footer_logo_display);
+        }
+      },
+      hello_footer_tagline_display: {
+        selector: '.site-footer .site-description',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_footer_tagline_display);
+        }
+      },
+      hello_footer_menu_display: {
+        selector: '.site-footer .site-navigation',
+        callback: ($element, args) => {
+          this.toggleShowHideClass($element, args.settings.hello_footer_menu_display);
+        }
+      },
+      hello_footer_copyright_display: {
+        selector: '.site-footer .copyright',
+        callback: ($element, args) => {
+          const $footerContainer = $element.closest('#site-footer'),
+            inputValue = args.settings.hello_footer_copyright_display;
+          this.toggleShowHideClass($element, inputValue);
+          $footerContainer.toggleClass('footer-has-copyright', 'yes' === inputValue);
+        }
+      },
+      hello_footer_logo_type: {
+        selector: '.site-footer .site-branding',
+        callback: ($element, args) => {
+          const classPrefix = 'show-',
+            inputOptions = args.container.controls.hello_footer_logo_type.options,
+            inputValue = args.settings.hello_footer_logo_type;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_footer_layout: {
+        selector: '.site-footer',
+        callback: ($element, args) => {
+          const classPrefix = 'footer-',
+            inputOptions = args.container.controls.hello_footer_layout.options,
+            inputValue = args.settings.hello_footer_layout;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_footer_width: {
+        selector: '.site-footer',
+        callback: ($element, args) => {
+          const classPrefix = 'footer-',
+            inputOptions = args.container.controls.hello_footer_width.options,
+            inputValue = args.settings.hello_footer_width;
+          this.toggleLayoutClass($element, classPrefix, inputOptions, inputValue);
+        }
+      },
+      hello_footer_copyright_text: {
+        selector: '.site-footer .copyright',
+        callback: ($element, args) => {
+          const inputValue = args.settings.hello_footer_copyright_text;
+          $element.find('p').text(inputValue);
+        }
+      }
+    };
+  }
+
+  /**
+   * Toggle show and hide classes on containers
+   *
+   * This will remove the .show and .hide clases from the element, then apply the new class
+   *
+   * @param {jQuery} element
+   * @param {string} inputValue
+   */
+  toggleShowHideClass(element, inputValue) {
+    element.removeClass('hide').removeClass('show').addClass(inputValue ? 'show' : 'hide');
+  }
+
+  /**
+   * Toggle layout classes on containers
+   *
+   * This will cleanly set classes onto which ever container we want to target, removing the old classes and adding the new one
+   *
+   * @param {jQuery} element
+   * @param {string} classPrefix
+   * @param {Object} inputOptions
+   * @param {string} inputValue
+   *
+   */
+  toggleLayoutClass(element, classPrefix, inputOptions, inputValue) {
+    // Loop through the possible classes and remove the one that's not in use
+    Object.entries(inputOptions).forEach(([key]) => {
+      element.removeClass(classPrefix + key);
+    });
+
+    // Append the class which we want to use onto the element
+    if ('' !== inputValue) {
+      element.addClass(classPrefix + inputValue);
+    }
+  }
+
+  /**
+   * Set the conditions under which the hook will run.
+   *
+   * @param {Object} args
+   */
+  getConditions(args) {
+    const isKit = 'kit' === elementor.documents.getCurrent().config.type,
+      changedControls = Object.keys(args.settings),
+      isSingleSetting = 1 === changedControls.length;
+
+    // If the document is not a kit, or there are no changed settings, or there is more than one single changed
+    // setting, don't run the hook.
+    if (!isKit || !args.settings || !isSingleSetting) {
+      return false;
+    }
+
+    // If the changed control is in the list of theme controls, return true to run the hook.
+    // Otherwise, return false so the hook doesn't run.
+    return !!Object.keys(this.getHelloThemeControls()).includes(changedControls[0]);
+  }
+
+  /**
+   * The hook logic.
+   *
+   * @param {Object} args
+   */
+  apply(args) {
+    const allThemeControls = this.getHelloThemeControls(),
+      // Extract the control ID from the passed args
+      controlId = Object.keys(args.settings)[0],
+      controlConfig = allThemeControls[controlId],
+      // Find the element that needs to be targeted by the control.
+      $element = elementor.$previewContents.find(controlConfig.selector);
+    controlConfig.callback($element, args);
+  }
+}
+exports["default"] = ControlsHook;
 
 /***/ }),
 
@@ -48,7 +284,22 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
   \***************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ \"./node_modules/@babel/runtime/helpers/toPropertyKey.js\");\nfunction _defineProperty(obj, key, value) {\n  key = toPropertyKey(key);\n  if (key in obj) {\n    Object.defineProperty(obj, key, {\n      value: value,\n      enumerable: true,\n      configurable: true,\n      writable: true\n    });\n  } else {\n    obj[key] = value;\n  }\n  return obj;\n}\nmodule.exports = _defineProperty, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n\n//# sourceURL=././node_modules/@babel/runtime/helpers/defineProperty.js");
+var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ "./node_modules/@babel/runtime/helpers/toPropertyKey.js");
+function _defineProperty(obj, key, value) {
+  key = toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -58,7 +309,12 @@ eval("var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ \"./node
   \**********************************************************************/
 /***/ ((module) => {
 
-eval("function _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : {\n    \"default\": obj\n  };\n}\nmodule.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n\n//# sourceURL=././node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -68,7 +324,18 @@ eval("function _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? o
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var _typeof = (__webpack_require__(/*! ./typeof.js */ \"./node_modules/@babel/runtime/helpers/typeof.js\")[\"default\"]);\nfunction _toPrimitive(input, hint) {\n  if (_typeof(input) !== \"object\" || input === null) return input;\n  var prim = input[Symbol.toPrimitive];\n  if (prim !== undefined) {\n    var res = prim.call(input, hint || \"default\");\n    if (_typeof(res) !== \"object\") return res;\n    throw new TypeError(\"@@toPrimitive must return a primitive value.\");\n  }\n  return (hint === \"string\" ? String : Number)(input);\n}\nmodule.exports = _toPrimitive, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n\n//# sourceURL=././node_modules/@babel/runtime/helpers/toPrimitive.js");
+var _typeof = (__webpack_require__(/*! ./typeof.js */ "./node_modules/@babel/runtime/helpers/typeof.js")["default"]);
+function _toPrimitive(input, hint) {
+  if (_typeof(input) !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (_typeof(res) !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+module.exports = _toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -78,7 +345,13 @@ eval("var _typeof = (__webpack_require__(/*! ./typeof.js */ \"./node_modules/@ba
   \**************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var _typeof = (__webpack_require__(/*! ./typeof.js */ \"./node_modules/@babel/runtime/helpers/typeof.js\")[\"default\"]);\nvar toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ \"./node_modules/@babel/runtime/helpers/toPrimitive.js\");\nfunction _toPropertyKey(arg) {\n  var key = toPrimitive(arg, \"string\");\n  return _typeof(key) === \"symbol\" ? key : String(key);\n}\nmodule.exports = _toPropertyKey, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n\n//# sourceURL=././node_modules/@babel/runtime/helpers/toPropertyKey.js");
+var _typeof = (__webpack_require__(/*! ./typeof.js */ "./node_modules/@babel/runtime/helpers/typeof.js")["default"]);
+var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ "./node_modules/@babel/runtime/helpers/toPrimitive.js");
+function _toPropertyKey(arg) {
+  var key = toPrimitive(arg, "string");
+  return _typeof(key) === "symbol" ? key : String(key);
+}
+module.exports = _toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -88,7 +361,16 @@ eval("var _typeof = (__webpack_require__(/*! ./typeof.js */ \"./node_modules/@ba
   \*******************************************************/
 /***/ ((module) => {
 
-eval("function _typeof(obj) {\n  \"@babel/helpers - typeof\";\n\n  return (module.exports = _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) {\n    return typeof obj;\n  } : function (obj) {\n    return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj;\n  }, module.exports.__esModule = true, module.exports[\"default\"] = module.exports), _typeof(obj);\n}\nmodule.exports = _typeof, module.exports.__esModule = true, module.exports[\"default\"] = module.exports;\n\n//# sourceURL=././node_modules/@babel/runtime/helpers/typeof.js");
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
+}
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ })
 
@@ -119,11 +401,20 @@ eval("function _typeof(obj) {\n  \"@babel/helpers - typeof\";\n\n  return (modul
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./assets/dev/js/editor/hello-editor.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!**********************************************!*\
+  !*** ./assets/dev/js/editor/hello-editor.js ***!
+  \**********************************************/
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _component = _interopRequireDefault(__webpack_require__(/*! ./component */ "./assets/dev/js/editor/component.js"));
+$e.components.register(new _component.default());
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=hello-editor.js.map

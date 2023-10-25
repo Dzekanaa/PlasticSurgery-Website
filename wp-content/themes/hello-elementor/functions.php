@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HELLO_ELEMENTOR_VERSION', '2.8.1' );
+define( 'HELLO_ELEMENTOR_VERSION', '2.9.0' );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
@@ -159,30 +159,45 @@ if ( ! function_exists( 'hello_elementor_content_width' ) ) {
 }
 add_action( 'after_setup_theme', 'hello_elementor_content_width', 0 );
 
+if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
+	/**
+	 * Add description meta tag with excerpt text.
+	 *
+	 * @return void
+	 */
+	function hello_elementor_add_description_meta_tag() {
+		if ( ! apply_filters( 'hello_elementor_description_meta_tag', true ) ) {
+			return;
+		}
+
+		if ( ! is_singular() ) {
+			return;
+		}
+
+		$post = get_queried_object();
+		if ( empty( $post->post_excerpt ) ) {
+			return;
+		}
+
+		echo '<meta name="description" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
+
+// Admin notice
 if ( is_admin() ) {
 	require get_template_directory() . '/includes/admin-functions.php';
 }
 
-/**
- * If Elementor is installed and active, we can load the Elementor-specific Settings & Features
-*/
+// Settings page
+require get_template_directory() . '/includes/settings-functions.php';
 
 // Allow active/inactive via the Experiments
 require get_template_directory() . '/includes/elementor-functions.php';
 
-/**
- * Include customizer registration functions
-*/
-function hello_register_customizer_functions() {
-	if ( is_customize_preview() ) {
-		require get_template_directory() . '/includes/customizer-functions.php';
-	}
-}
-add_action( 'init', 'hello_register_customizer_functions' );
-
 if ( ! function_exists( 'hello_elementor_check_hide_title' ) ) {
 	/**
-	 * Check hide title.
+	 * Check whether to display the page title.
 	 *
 	 * @param bool $val default value.
 	 *
@@ -199,22 +214,6 @@ if ( ! function_exists( 'hello_elementor_check_hide_title' ) ) {
 	}
 }
 add_filter( 'hello_elementor_page_title', 'hello_elementor_check_hide_title' );
-
-if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
-	/**
-	 * Add description meta tag with excerpt text.
-	 *
-	 * @return void
-	 */
-	function hello_elementor_add_description_meta_tag() {
-		$post = get_queried_object();
-
-		if ( is_singular() && ! empty( $post->post_excerpt ) ) {
-			echo '<meta name="description" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
-		}
-	}
-}
-add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
 
 /**
  * BC:
