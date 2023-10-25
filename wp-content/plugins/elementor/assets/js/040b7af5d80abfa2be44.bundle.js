@@ -1,4 +1,4 @@
-/*! elementor - v3.16.0 - 17-10-2023 */
+/*! elementor - v3.17.0 - 25-10-2023 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["modules_nested-accordion_assets_js_editor_module_js"],{
 
 /***/ "../modules/nested-accordion/assets/js/editor/module.js":
@@ -45,6 +45,7 @@ var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtim
 var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
 var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
 var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _view = _interopRequireDefault(__webpack_require__(/*! ./views/view */ "../modules/nested-accordion/assets/js/editor/views/view.js"));
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var NestedAccordion = /*#__PURE__*/function (_elementor$modules$el) {
@@ -59,12 +60,62 @@ var NestedAccordion = /*#__PURE__*/function (_elementor$modules$el) {
     value: function getType() {
       return 'nested-accordion';
     }
+  }, {
+    key: "getView",
+    value: function getView() {
+      return _view.default;
+    }
   }]);
   return NestedAccordion;
 }(elementor.modules.elements.types.NestedElementBase);
 exports.NestedAccordion = NestedAccordion;
 var _default = NestedAccordion;
 exports["default"] = _default;
+
+/***/ }),
+
+/***/ "../modules/nested-accordion/assets/js/editor/views/view.js":
+/*!******************************************************************!*\
+  !*** ../modules/nested-accordion/assets/js/editor/views/view.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var View = /*#__PURE__*/function (_$e$components$get$ex) {
+  (0, _inherits2.default)(View, _$e$components$get$ex);
+  var _super = _createSuper(View);
+  function View() {
+    (0, _classCallCheck2.default)(this, View);
+    return _super.apply(this, arguments);
+  }
+  (0, _createClass2.default)(View, [{
+    key: "onAddChild",
+    value: function onAddChild(childView) {
+      var _childView$_parent$$e;
+      var accordionId = (_childView$_parent$$e = childView._parent.$el.find('summary')) === null || _childView$_parent$$e === void 0 ? void 0 : _childView$_parent$$e.attr('aria-controls');
+      childView.$el.attr({
+        role: 'region',
+        'aria-labelledby': accordionId
+      });
+    }
+  }]);
+  return View;
+}($e.components.get('nested-elements').exports.NestedView);
+exports["default"] = View;
 
 /***/ }),
 
@@ -245,4 +296,4 @@ module.exports = _toPropertyKey, module.exports.__esModule = true, module.export
 /***/ })
 
 }]);
-//# sourceMappingURL=d6220da5189e9a2aac43.bundle.js.map
+//# sourceMappingURL=040b7af5d80abfa2be44.bundle.js.map
